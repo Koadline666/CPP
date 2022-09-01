@@ -5,24 +5,26 @@
 #                                                     +:+ +:+         +:+      #
 #    By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/08/31 17:34:04 by afenzl            #+#    #+#              #
-#    Updated: 2022/09/01 18:31:57 by afenzl           ###   ########.fr        #
+#    Created: 2022/09/01 18:33:40 by afenzl            #+#    #+#              #
+#    Updated: 2022/09/01 20:26:09 by afenzl           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = megaphone
+NAME = phonebook
 
 CPP = c++
 CPP_FLAGS =  -Wall -Wextra -Werror -std=c++98
 RM := rm -f
 
-SRC = ./megaphone.cpp
+SRC = ./main.cpp
+
+HEADER = contact.hpp phonebook.hpp
 
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(HEADER)
 	@$(CPP) $(CPP_FLAGS) $(OBJ) -o $(NAME)
 	@echo "                                                         "
 	@echo " \033[0;31m  ___|\033[0;32m   _ \ \033[0;33m   \  |\033[0;34m   _ \ \033[0;35m_ _|\033[0;36m  |   \033[0;31m   ____|\033[0;32m  __ \ \033[0;33m  | "
