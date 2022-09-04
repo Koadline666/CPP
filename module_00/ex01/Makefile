@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/09/01 18:33:40 by afenzl            #+#    #+#              #
-#    Updated: 2022/09/01 20:26:09 by afenzl           ###   ########.fr        #
+#    Created: 2022/09/04 13:35:57 by afenzl            #+#    #+#              #
+#    Updated: 2022/09/04 19:01:19 by afenzl           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,9 @@ CPP = c++
 CPP_FLAGS =  -Wall -Wextra -Werror -std=c++98
 RM := rm -f
 
-SRC = ./main.cpp
+HEADER = ./contact.hpp ./phonebook.hpp
 
-HEADER = contact.hpp phonebook.hpp
+SRC = ./main.cpp ./contact.cpp ./phonebook.cpp
 
 OBJ = $(SRC:.cpp=.o)
 

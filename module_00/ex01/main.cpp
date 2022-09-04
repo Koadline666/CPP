@@ -5,43 +5,47 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/01 19:20:15 by afenzl            #+#    #+#             */
-/*   Updated: 2022/09/01 23:32:12 by afenzl           ###   ########.fr       */
+/*   Created: 2022/09/04 13:36:51 by afenzl            #+#    #+#             */
+/*   Updated: 2022/09/04 20:09:39 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "phonebook.hpp"
 
 void	promt(void)
 {
-	std::cout << "\t      ------------------------------------\n";
-	std::cout << "\t      | PLEASE ENTER YOUR DESIRED ACTION: |\n";
-	std::cout << "\t      |                                   |\n";
-	std::cout << "\t      |  ADD         SEARCH         EXIT  |\n";
-	std::cout << "\t      |                                   |\n";
-	std::cout << "\t      ------------------------------------\n";
+	std::cout << "\t       ----------------------------------------" << std::endl;
+	std::cout << "\t       |   PLEASE ENTER YOUR DESIRED ACTION   |" << std::endl;
+	std::cout << "\t       |                                      |" << std::endl;
+	std::cout << "\t       |    ADD        SEARCH         EXIT    |" << std::endl;
+	std::cout << "\t       |                                      |" << std::endl;
+	std::cout << "\t       ----------------------------------------" << std::endl;
 }
 
 int	main(void)
 {
-	PhoneBook phonebook;
-	std::string input;
+	PhoneBook	phonebook;
+	std::string	input;
+	int			loop = 1;
+	int			index = 0;
 
-	while (true)
+	promt();
+	while (loop)
 	{
-		promt();
-		std:: cout << ">\n";
 		std::getline(std::cin, input);
-		if (input.compare("ADD") == 0)
-			std::cout << "ADD" << std::endl;
-		else if (input.compare("SEARCH") == 0)
-			std::cout << "SEARCH" << std::endl;
-		else if (input.compare("EXIT") == 0)
+		if (input == "ADD")
 		{
-			std:: cout << "BYE BYE" << std::endl;
-			break;
+			if (index == 8)
+				index = 0;
+			std::cout << "index is " << index << std::endl;
+			phonebook.add_contact(index);
+			index++;
 		}
+		else if (input == "SEARCH")
+			phonebook.search_contact();
+		else if (input == "EXIT")
+			loop = 0;
 	}
-	
+	std::cout << "BYE BYE ...";
 	return (0);
 }

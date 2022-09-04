@@ -5,27 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/01 19:10:39 by afenzl            #+#    #+#             */
-/*   Updated: 2022/09/01 23:28:23 by afenzl           ###   ########.fr       */
+/*   Created: 2022/09/04 19:01:25 by afenzl            #+#    #+#             */
+/*   Updated: 2022/09/04 20:07:07 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
-
 #include "contact.hpp"
 
 class PhoneBook
 {
-	private:
 		Contact list[8];
 	public:
-		PhoneBook()
-		{std:: cout << "\n\t\tPHONEBOOK IS CURRENTLY EMPTY\n";}
-		Contact *getContact(void)
-		{return (list);}
-		void add_contact()
-	
+		void add_contact(int index);
+		void search_contact(void);
 };
 
 #endif
