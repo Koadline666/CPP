@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 13:37:55 by afenzl            #+#    #+#             */
-/*   Updated: 2022/09/04 19:52:46 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/09/05 14:08:55 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ void	Contact::set_darkest_secret(std::string darkest_secret)
 	this->darkest_secret = darkest_secret;
 }
 
+void	Contact::set_created(bool created)
+{
+	this->created = created;
+}
+
 std::string Contact::get_phonenumber(void)
 {
 	return(this->phonenumber);
@@ -60,6 +65,11 @@ std::string Contact::get_nickname(void)
 std::string Contact::get_darkest_secret(void)
 {
 	return(this->darkest_secret);
+}
+
+bool	Contact::get_created(void)
+{
+	return(this->created);
 }
 
 void	Contact::print_contact(void)

@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 17:34:09 by afenzl            #+#    #+#             */
-/*   Updated: 2022/09/01 19:07:02 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/09/05 13:14:17 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	main(int argc, char **argv)
 			std::string line = to_uppercase(argv[i]);
 			std:: cout << line;
 		}
-		std:: cout << "\n";
+		std:: cout << std::endl;
 	}
 	return (0);
 }
