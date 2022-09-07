@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 17:50:23 by afenzl            #+#    #+#             */
-/*   Updated: 2022/09/07 18:02:21 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/09/07 19:05:11 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Weapon::Weapon(std::string type)
 
 Weapon::~Weapon(void)
 {
-	std::cout << "Weapon type " << this->type << "destroyed\n";
+	std::cout << "Weapon type " << this->type << " destroyed\n";
 }
 
 void	Weapon::setType(std::string type)

@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 17:54:08 by afenzl            #+#    #+#             */
-/*   Updated: 2022/09/07 18:29:55 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/09/07 19:20:20 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,16 @@
 
 # include "Weapon.hpp"
 
+class HumanB
+{
+	private:
+		std::string	name;
+		Weapon		*weapon;
+	public:
+		HumanB(std::string name);
+		void setWeapon(Weapon weapon);
+		void attack( void );
+		~HumanB();
+};
 
 #endif
