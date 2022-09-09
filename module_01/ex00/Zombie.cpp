@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.cpp                                         :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 17:50:23 by afenzl            #+#    #+#             */
-/*   Updated: 2022/09/07 19:47:05 by afenzl           ###   ########.fr       */
+/*   Created: 2022/09/07 14:20:31 by afenzl            #+#    #+#             */
+/*   Updated: 2022/09/07 19:25:10 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "Weapon.hpp"
+#include "Zombie.hpp"
 
-Weapon::Weapon(std::string type) : type(type)
+Zombie::Zombie()
+{
+	this->name = "randomZombie";
+}
+
+Zombie::Zombie(std::string name): name(name)
 {
 }
 
-Weapon::~Weapon(void)
+Zombie::~Zombie()
 {
-	std::cout << "Weapon type \"" << this->type << "\" destroyed\n";
+	std::cout << name << " died\n";
 }
 
-void	Weapon::setType(std::string type)
+void Zombie::announce(void)
 {
-	this->type = type;
-}
-
-const std::string&	Weapon::getType()
-{
-	std::string& reference = this->type;
-	return(reference);
+	std::cout << name << ": BraiiiiiiinnnzzzZ...\n";
 }

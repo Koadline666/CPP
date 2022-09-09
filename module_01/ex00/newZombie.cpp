@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.cpp                                         :+:      :+:    :+:   */
+/*   newZombie.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 17:50:23 by afenzl            #+#    #+#             */
-/*   Updated: 2022/09/07 19:47:05 by afenzl           ###   ########.fr       */
+/*   Created: 2022/09/07 14:35:28 by afenzl            #+#    #+#             */
+/*   Updated: 2022/09/07 17:07:31 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "Weapon.hpp"
+#include "Zombie.hpp"
 
-Weapon::Weapon(std::string type) : type(type)
+Zombie* newZombie( std::string name )
 {
-}
-
-Weapon::~Weapon(void)
-{
-	std::cout << "Weapon type \"" << this->type << "\" destroyed\n";
-}
-
-void	Weapon::setType(std::string type)
-{
-	this->type = type;
-}
-
-const std::string&	Weapon::getType()
-{
-	std::string& reference = this->type;
-	return(reference);
+	Zombie *new_zombie = new Zombie(name);
+	if (!new_zombie)
+		std::cout << "allocation failed\n";
+	return(new_zombie);
 }

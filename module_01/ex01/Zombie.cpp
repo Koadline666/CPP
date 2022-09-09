@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.cpp                                         :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 17:50:23 by afenzl            #+#    #+#             */
-/*   Updated: 2022/09/07 19:47:05 by afenzl           ###   ########.fr       */
+/*   Created: 2022/09/07 16:53:31 by afenzl            #+#    #+#             */
+/*   Updated: 2022/09/07 19:28:37 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "Weapon.hpp"
+#include "Zombie.hpp"
 
-Weapon::Weapon(std::string type) : type(type)
+Zombie::Zombie() : name("randomZombie") {}
+
+Zombie::Zombie(std::string name):name(name) {}
+
+Zombie::~Zombie()
 {
+	std::cout << name << " died\n";
 }
 
-Weapon::~Weapon(void)
+void Zombie::set_name(std::string name)
 {
-	std::cout << "Weapon type \"" << this->type << "\" destroyed\n";
+	this->name = name;
 }
 
-void	Weapon::setType(std::string type)
+void Zombie::announce(void)
 {
-	this->type = type;
-}
-
-const std::string&	Weapon::getType()
-{
-	std::string& reference = this->type;
-	return(reference);
+	std::cout << name << ": BraiiiiiiinnnzzzZ...\n";
 }

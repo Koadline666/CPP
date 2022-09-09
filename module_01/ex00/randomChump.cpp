@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.cpp                                         :+:      :+:    :+:   */
+/*   randomChump.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 17:50:23 by afenzl            #+#    #+#             */
-/*   Updated: 2022/09/07 19:47:05 by afenzl           ###   ########.fr       */
+/*   Created: 2022/09/07 14:37:49 by afenzl            #+#    #+#             */
+/*   Updated: 2022/09/07 16:45:08 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "Weapon.hpp"
+#include "Zombie.hpp"
 
-Weapon::Weapon(std::string type) : type(type)
+void randomChump( std::string name )
 {
-}
-
-Weapon::~Weapon(void)
-{
-	std::cout << "Weapon type \"" << this->type << "\" destroyed\n";
-}
-
-void	Weapon::setType(std::string type)
-{
-	this->type = type;
-}
-
-const std::string&	Weapon::getType()
-{
-	std::string& reference = this->type;
-	return(reference);
+	Zombie *zombie = newZombie(name);
+	zombie->announce();
+	delete zombie;
 }

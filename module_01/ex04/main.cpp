@@ -5,32 +5,34 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 18:00:37 by afenzl            #+#    #+#             */
-/*   Updated: 2022/09/09 13:27:53 by afenzl           ###   ########.fr       */
+/*   Created: 2022/09/07 19:32:58 by afenzl            #+#    #+#             */
+/*   Updated: 2022/09/09 13:40:51 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanA.hpp"
-#include "HumanB.hpp"
+# include "Sed.hpp"
 
-int main(void)
+int main(int argc, char **argv)
 {
+	if (argc != 4)
 	{
-		Weapon club = Weapon("crude spiked club");
-		HumanA bob("Bob", club);
-		bob.attack();
-		club.setType("some other type of club");
-		bob.attack();
+		std::cout << "not the right amount of parameters\n";
+		return (1);
 	}
-	{
-		Weapon club = Weapon("crude spiked club");
-		HumanB jim("Jim");
-		jim.setWeapon(club);
-		jim.attack();
-		club.setType("some other type of club");
-		jim.attack();
-	}
-	std::cout << "\n\n";
-	system("leaks zombie");
+	
+	return (Sed::sed(argv[1], argv[2], argv[3]));
+	
+	// Sed input(argv[1], argv[2], argv[3]);
+	// input.sed();
+	// return (input.get_return_value());
 	return (0);
 }
+
+// int main(void)
+// {
+// 	Sed::sed("not_valid_file", "this", "that");
+// 	// valid tests
+// 	Sed::sed("test1", "no_such_string", "that");
+// 	Sed::sed("test1", "", "that");
+// 	Sed::sed("test1", "eggs", "EGGS");
+// }

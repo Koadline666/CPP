@@ -5,32 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 18:00:37 by afenzl            #+#    #+#             */
-/*   Updated: 2022/09/09 13:27:53 by afenzl           ###   ########.fr       */
+/*   Created: 2022/09/07 16:53:36 by afenzl            #+#    #+#             */
+/*   Updated: 2022/09/07 17:35:34 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanA.hpp"
-#include "HumanB.hpp"
+#include "Zombie.hpp"
 
 int main(void)
 {
-	{
-		Weapon club = Weapon("crude spiked club");
-		HumanA bob("Bob", club);
-		bob.attack();
-		club.setType("some other type of club");
-		bob.attack();
-	}
-	{
-		Weapon club = Weapon("crude spiked club");
-		HumanB jim("Jim");
-		jim.setWeapon(club);
-		jim.attack();
-		club.setType("some other type of club");
-		jim.attack();
-	}
-	std::cout << "\n\n";
+	int	N = 10;
+
+	Zombie *zombie = zombieHorde(N, "Karl");
+	for (int i = 0; i < N; i++)
+		zombie[i].announce();
+	delete []zombie;
+
 	system("leaks zombie");
 	return (0);
 }

@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.cpp                                         :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 17:50:23 by afenzl            #+#    #+#             */
-/*   Updated: 2022/09/07 19:47:05 by afenzl           ###   ########.fr       */
+/*   Created: 2022/09/07 16:53:53 by afenzl            #+#    #+#             */
+/*   Updated: 2022/09/07 17:29:42 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "Weapon.hpp"
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
 
-Weapon::Weapon(std::string type) : type(type)
-{
-}
+# include <iostream>
 
-Weapon::~Weapon(void)
+class	Zombie
 {
-	std::cout << "Weapon type \"" << this->type << "\" destroyed\n";
-}
+	private:
+		std::string	name;
+	public:
+		Zombie(std::string name);
+		Zombie();
+		void	set_name(std::string name);
+		void	announce( void );
+		~Zombie();
+};
 
-void	Weapon::setType(std::string type)
-{
-	this->type = type;
-}
+Zombie* zombieHorde( int N, std::string name );
 
-const std::string&	Weapon::getType()
-{
-	std::string& reference = this->type;
-	return(reference);
-}
+#endif

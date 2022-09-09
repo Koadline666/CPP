@@ -5,32 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 18:00:37 by afenzl            #+#    #+#             */
-/*   Updated: 2022/09/09 13:27:53 by afenzl           ###   ########.fr       */
+/*   Created: 2022/09/08 16:26:48 by afenzl            #+#    #+#             */
+/*   Updated: 2022/09/09 12:50:16 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanA.hpp"
-#include "HumanB.hpp"
+# include "Harl.hpp"
 
 int main(void)
 {
-	{
-		Weapon club = Weapon("crude spiked club");
-		HumanA bob("Bob", club);
-		bob.attack();
-		club.setType("some other type of club");
-		bob.attack();
-	}
-	{
-		Weapon club = Weapon("crude spiked club");
-		HumanB jim("Jim");
-		jim.setWeapon(club);
-		jim.attack();
-		club.setType("some other type of club");
-		jim.attack();
-	}
-	std::cout << "\n\n";
-	system("leaks zombie");
+	Harl harl;
+	
+	harl.complain("DEBUG");
+	harl.complain("INFO");
+	harl.complain("WARNING");
+	harl.complain("ERROR");
+	harl.complain("RANDOM");
 	return (0);
 }
