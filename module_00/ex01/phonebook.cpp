@@ -6,14 +6,18 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 19:01:22 by afenzl            #+#    #+#             */
-/*   Updated: 2022/09/06 18:23:03 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/09/07 14:25:09 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phonebook.hpp"
+#include "PhoneBook.hpp"
 
-// using std::cout;
-// using std::cin;
+PhoneBook::PhoneBook(void)
+{
+	std::cout << "\n\t\t\tPHONEBOOK IS EMPTY\n\n";
+}
+
+PhoneBook::~PhoneBook(void) {}
 
 std::string	remove_whitespace(std::string input)
 {
@@ -49,7 +53,10 @@ int	check_for_digit(std::string phonenumber)
 	for(size_t i = 0; i < phonenumber.size(); i++)
 	{
 		if (!std::isdigit(phonenumber[i]))
+		{
+			std::cout << "INPUT NOT VALID, PLEASE ENTER A NUMBER\n";
 			return (1);
+		}
 	}
 	return (0);
 }
@@ -128,11 +135,14 @@ void	PhoneBook::search_contact(void)
 			return ;
 		}
 		else
+		{
 			list[index].print_contact();
+			std::cout << "\n\n";
+		}
 	}
 	else
 	{
-		std::cout << "INPUT NOT VALID, TRY AGAIN\n\n";
+		std::cout << "\n\nINPUT NOT VALID, TRY AGAIN\n\n";
 		search_contact();
 	}
 }

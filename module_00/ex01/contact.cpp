@@ -6,11 +6,15 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 13:37:55 by afenzl            #+#    #+#             */
-/*   Updated: 2022/09/05 14:08:55 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/09/07 14:24:47 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "contact.hpp"
+# include "Contact.hpp"
+
+Contact::Contact() {}
+
+Contact::~Contact() {}
 
 void	Contact::set_phonenumber(std::string phonenumber)
 {

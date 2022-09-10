@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 11:47:51 by afenzl            #+#    #+#             */
-/*   Updated: 2022/09/07 13:20:30 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/09/07 14:26:09 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ Account::~Account(void)
 	_display_index_amount(_accountIndex, _amount);
 	std::cout << ";closed\n";
 }
+
 
 int	Account::getNbAccounts( void )
 {

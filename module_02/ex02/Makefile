@@ -5,20 +5,20 @@
 #                                                     +:+ +:+         +:+      #
 #    By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/09/04 13:35:57 by afenzl            #+#    #+#              #
-#    Updated: 2022/09/07 13:49:44 by afenzl           ###   ########.fr        #
+#    Created: 2022/09/10 14:26:20 by afenzl            #+#    #+#              #
+#    Updated: 2022/09/10 14:26:25 by afenzl           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = phonebook
+NAME = ex02
 
 CPP = c++
 CPP_FLAGS =  -Wall -Wextra -Werror -std=c++98
 RM := rm -f
 
-HEADER = ./Contact.hpp ./PhoneBook.hpp
+HEADER = Fixed.hpp
 
-SRC = ./main.cpp ./Contact.cpp ./PhoneBook.cpp
+SRC = ./main.cpp ./Fixed.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
