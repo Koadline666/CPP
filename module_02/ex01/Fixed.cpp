@@ -6,11 +6,13 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:03:38 by afenzl            #+#    #+#             */
-/*   Updated: 2022/09/10 14:25:02 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/09/13 17:05:34 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+
+// ************************* Helper Functions  ************************* 
 
 int high(int i, int e)
 {
@@ -21,7 +23,10 @@ int high(int i, int e)
 	return (n);
 }
 
-// constructor
+
+
+// ************************* Constructors ************************* 
+
 Fixed::Fixed()
 {
 	std::cout << "Default constructor called\n";
@@ -68,6 +73,12 @@ Fixed::Fixed(const float n)
 	}
 }
 
+Fixed::~Fixed(void) {std::cout << "Destructor called\n";}
+
+
+
+// Operators
+
 void Fixed::operator= (const Fixed &fix)
 {
 	std::cout << "Copy assignment operator called\n";
@@ -81,11 +92,10 @@ std::ostream&	operator<<(std::ostream &output, const Fixed& fix)
 	return (output);
 }
 
-// destructor
-Fixed::~Fixed(void) {std::cout << "Destructor called\n";}
 
 
-// functions
+// ************************* Member Functions ************************* 
+
 int	Fixed::getRawBits( void ) const
 {
 	std::cout << "getRawBits member function called\n";
@@ -99,7 +109,6 @@ void	Fixed::setRawBits(int const raw)
 
 float	Fixed::toFloat( void ) const
 {
-	// float ret = this->fix_point / high(2, this->literal);
 	float ret = this->fix_point >> (this->literal);
 	int c = this->fix_point % high(2, this->literal);
 	
