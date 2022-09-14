@@ -1,4 +1,4 @@
-# include "ClapTrap.hpp"
+#include "ClapTrap.hpp"
 
 //  ----------------------- CONSTRUCTORS & DESTRUCTOR -----------------------
 
@@ -26,12 +26,12 @@ ClapTrap::~ClapTrap()
 
 //  ----------------------- OPERATOR OVERLOAD -----------------------
 
-void ClapTrap::operator= (const ClapTrap &clap)
+void ClapTrap::operator= (ClapTrap const & src)
 {
-	this->name = clap.name;
-	this->ad = clap.ad;
-	this->ep = clap.ep;
-	this->hp = clap.hp;
+	this->name = src.name;
+	this->ad = src.ad;
+	this->ep = src.ep;
+	this->hp = src.hp;
 }
 
 //  ----------------------- METHODS -----------------------
@@ -82,6 +82,7 @@ void ClapTrap::set_name(std::string name)
 {
 	this->name = name;
 }
+
 void ClapTrap::set_hp(int hp)
 {
 	this->hp = hp;

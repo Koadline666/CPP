@@ -1,12 +1,12 @@
-NAME = ex00
+NAME = ex02
 
 CPP = c++
 CPP_FLAGS =  -Wall -Wextra -Werror -std=c++98
 RM := rm -f
 
-HEADER = ClapTrap.hpp
+HEADER = ./ClapTrap.hpp ./FragTrap.hpp
 
-SRC = main.cpp ClapTrap.cpp
+SRC = ./main.cpp ./ClapTrap.cpp ./FragTrap.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
