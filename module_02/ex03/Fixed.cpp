@@ -6,11 +6,13 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 14:29:24 by afenzl            #+#    #+#             */
-/*   Updated: 2022/09/13 17:12:27 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/09/14 14:44:53 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+
+// ************************* helper functions **************************
 
 int high(int i, int e)
 {
@@ -80,7 +82,7 @@ void	Fixed::setRawBits(int const raw)
 	this->fix_point = raw;
 }
 
-// Conersions
+// Conversions
 float	Fixed::toFloat( void ) const
 {
 	return ((float) (this->fix_point / (float) (1 << this->literal)));

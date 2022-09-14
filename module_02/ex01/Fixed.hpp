@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 13:54:50 by afenzl            #+#    #+#             */
-/*   Updated: 2022/09/10 14:16:51 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/09/14 14:39:53 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,11 @@ class Fixed
 		int		toInt( void ) const;
 
 		void	operator = (const Fixed &fix);
-		friend	std::ostream&	operator <<(std::ostream& output, const Fixed& fix);
 
 		~Fixed();
 };
+
+// ostream operator overload
+std::ostream&	operator <<(std::ostream& output, const Fixed& fix);
 
 #endif

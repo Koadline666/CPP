@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:03:38 by afenzl            #+#    #+#             */
-/*   Updated: 2022/09/13 17:05:34 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/09/14 14:38:53 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ int high(int i, int e)
 	return (n);
 }
 
-
-
 // ************************* Constructors ************************* 
 
 Fixed::Fixed()
@@ -40,7 +38,6 @@ Fixed::Fixed(const Fixed &fix)
 	
 	*this = fix;
 }
-
 
 Fixed::Fixed(const int n)
 {
@@ -75,9 +72,7 @@ Fixed::Fixed(const float n)
 
 Fixed::~Fixed(void) {std::cout << "Destructor called\n";}
 
-
-
-// Operators
+// *********************** Operator overloads ***************************			
 
 void Fixed::operator= (const Fixed &fix)
 {
@@ -91,8 +86,6 @@ std::ostream&	operator<<(std::ostream &output, const Fixed& fix)
 	output << fix.toFloat();;
 	return (output);
 }
-
-
 
 // ************************* Member Functions ************************* 
 
@@ -109,12 +102,7 @@ void	Fixed::setRawBits(int const raw)
 
 float	Fixed::toFloat( void ) const
 {
-	float ret = this->fix_point >> (this->literal);
-	int c = this->fix_point % high(2, this->literal);
-	
-	for (int i = 0; i < this->literal; i++)
-		ret += ((c % high(2, this->literal - i)) / high(2, this->literal - i - 1)) * (1 / (high(2, i + 1) + 0.0f));
-	return (ret);
+	return ((float) (this->fix_point / (float) (1 << this->literal)));
 }
 
 int Fixed::toInt( void ) const

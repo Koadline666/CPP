@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 13:54:39 by afenzl            #+#    #+#             */
-/*   Updated: 2022/09/10 14:16:41 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/09/14 14:40:15 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	main(void)
 	Fixed const c( 42.42f );
 	Fixed const d( b );
 	a = Fixed( 1234.4321f );
+
 	std::cout << "a is " << a << std::endl;
 	std::cout << "b is " << b << std::endl;
 	std::cout << "c is " << c << std::endl;
