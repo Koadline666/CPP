@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 15:19:23 by afenzl            #+#    #+#             */
-/*   Updated: 2022/09/30 15:01:46 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/09/30 19:38:11 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,11 @@ int			Form::getGrade_exec() const { return(this->grade_exec_); }
 
 bool		Form::getSign() const { return(this->sign_); }
 
+void		Form::setSign( bool sign )
+{
+	sign_ = sign;
+}
+
 //  ----------------------- METHODS -----------------------
 
 void Form::beSigned(Bureaucrat & worker)
@@ -84,6 +89,11 @@ void Form::beSigned(Bureaucrat & worker)
 		sign_ = true;
 	else
 		throw GradeTooLowException();
+}
+
+void Form::execute(Bureaucrat const & executor) const
+{
+	
 }
 
 //  ----------------------- EXCEPTIONS -------------

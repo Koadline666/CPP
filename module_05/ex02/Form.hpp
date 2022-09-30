@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 15:10:52 by afenzl            #+#    #+#             */
-/*   Updated: 2022/09/30 14:28:57 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/09/30 19:37:38 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,12 @@ class Form
 		int			getGrade_sign() const;
 		int			getGrade_exec() const;
 		bool		getSign() const;
+		void		setSign( bool sign );
 
-		void		beSigned(Bureaucrat & worker);
+		virtual void beSigned(Bureaucrat & worker) = 0;
+		virtual void execute(Bureaucrat const & executor) const;
 
-		~Form();
+		virtual ~Form();
 
 		class GradeTooHighException: public std::exception
 		{
