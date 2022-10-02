@@ -6,13 +6,13 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 15:03:38 by afenzl            #+#    #+#             */
-/*   Updated: 2022/09/14 14:38:53 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/09/27 15:07:30 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-// ************************* Helper Functions  ************************* 
+// ************************* Helper Functions  *********************
 
 int high(int i, int e)
 {
@@ -23,7 +23,7 @@ int high(int i, int e)
 	return (n);
 }
 
-// ************************* Constructors ************************* 
+// ************************* Constructors *************************
 
 Fixed::Fixed()
 {
@@ -72,7 +72,7 @@ Fixed::Fixed(const float n)
 
 Fixed::~Fixed(void) {std::cout << "Destructor called\n";}
 
-// *********************** Operator overloads ***************************			
+// *********************** Operator overloads ***************************
 
 void Fixed::operator= (const Fixed &fix)
 {
@@ -83,11 +83,11 @@ void Fixed::operator= (const Fixed &fix)
 
 std::ostream&	operator<<(std::ostream &output, const Fixed& fix)
 {
-	output << fix.toFloat();;
+	output << fix.toFloat();
 	return (output);
 }
 
-// ************************* Member Functions ************************* 
+// ************************* Member Functions *************************
 
 int	Fixed::getRawBits( void ) const
 {
