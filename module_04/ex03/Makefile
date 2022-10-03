@@ -1,12 +1,12 @@
-NAME = ex01
+NAME = ex03
 
 CPP = c++
 CPP_FLAGS =  -Wall -Wextra -Werror -std=c++98
 RM := rm -f
 
-HEADER = ./AMateria.hpp ./ICharacter.hpp
+HEADER = ./AMateria.hpp ./ICharacter.hpp ./Character.hpp ./Ice.hpp ./Cure.hpp ./IMateriaSource.hpp ./MateriaSource.hpp
 
-SRC = ./main.cpp ./AMateria.cpp ./ICharacter.cpp
+SRC = ./main.cpp ./AMateria.cpp ./Character.cpp ./Ice.cpp ./Cure.cpp ./MateriaSource.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)

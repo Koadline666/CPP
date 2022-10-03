@@ -2,22 +2,25 @@
 # define AMATERIA
 
 # include <iostream>
+# include "ICharacter.hpp"
+
+class ICharacter;
 
 class AMateria
 {
 	protected:
-		static const std::string	type_;
+		std::string	type_;
 
 	public:
 		AMateria();
 		AMateria(std::string const & type);
-		AMateria(const AMateria & copy);
-		
-		void operator= (const AMateria & src);
+		AMateria(AMateria const & copy);
 
-		std::string const & getType() const;
+		AMateria &operator= (AMateria const & src);
+
+		const std::string & getType() const;
 		virtual AMateria* clone() const = 0;
-		// virtual void use(ICharacter& target);
+		virtual void use(ICharacter& target) = 0;
 
 		virtual ~AMateria();
 };

@@ -1,15 +1,23 @@
 
 #include "AMateria.hpp"
 
-AMateria::AMateria(): type_("cure") {}
+//  -------------- CONSTRUCTORS & DESTRUCTOR ----------------
+AMateria::AMateria(): type_("") {}
 
 AMateria::AMateria(std::string const & type): type_(type) {}
 
-AMateria::AMateria(const AMateria & copy): type_(copy.getType()) {}
-
-void AMateria::operator= (const AMateria & src)
+AMateria::AMateria(AMateria const & copy)
 {
-	type_ = src.getType();
+	*this = copy;
+}
+
+AMateria::~AMateria() { std::cout << "AMateria " << type_ << " destroyed!" << std::endl; }
+
+AMateria &AMateria::operator= (AMateria const & src)
+{
+	if (this == &src)
+		return(*this);
+	return(*this);
 }
 
 std::string const & AMateria::getType() const
@@ -17,10 +25,3 @@ std::string const & AMateria::getType() const
 	return (type_);
 }
 
-void AMateria::use(ICharacter& target)
-{
-	if (type_ == "ice")
-		std::cout << "* shoots an ice bolt at " << target << " *" << std::endl;
-	else if (type_ == "cure")
-		std::cout << "* heals " << target << "'s wounds *" << std::endl;
-}

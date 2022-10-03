@@ -1,18 +1,36 @@
-
 # include "Cure.hpp"
 
-Cure::Cure():AMateria("cure") {}
+//  -------------- CONSTRUCTORS & DESTRUCTOR ----------------
 
-Cure(const Cure & copy)
+Cure::Cure()
 {
-	
+	std::cout << "Cure has been created." << std::endl;
+	this->type_ = "cure";
 }
 
-void operator=(const Cure & src)
+Cure::Cure(AMateria const & copy)
 {
-
+	std::cout << "Copy constructor for Cure called" << std::endl;
+	*this = copy;
 }
 
-virtual AMateria* clone() const;
+Cure::~Cure(){ std::cout << "Cure has been destroyed!" << std::endl; }
 
-~Cure();
+Cure &Cure::operator=(Cure const & src)
+{
+	if (this == &src)
+		return (*this);
+	return( *this);
+}
+
+//  -------------- METHODS ----------------
+
+AMateria* Cure::clone() const
+{
+	return (new Cure());
+}
+
+void Cure::use(ICharacter& target)
+{
+	std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
+}
