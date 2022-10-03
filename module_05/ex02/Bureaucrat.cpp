@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 14:58:15 by afenzl            #+#    #+#             */
-/*   Updated: 2022/09/30 15:03:45 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/10/03 03:42:02 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,13 @@ void Bureaucrat::signForm(Form & paper)
 	paper.beSigned(*this);
 	std::cout << name_ << "\033[0;32m signed \033[0m" << paper.getName() << std::endl;
 }
+
+void Bureaucrat::executeForm(Form &paper)
+{
+	paper.execute(*this);
+	std::cout << name_ << "\033[0;32m executed \033[0m" << paper.getName() << std::endl;
+}
+
 
 //  ----------------------- EXCEPTIONS -------------
 

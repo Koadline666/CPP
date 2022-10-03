@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 14:51:26 by afenzl            #+#    #+#             */
-/*   Updated: 2022/09/29 18:41:38 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/10/03 03:37:02 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ class Bureaucrat
 		void decrement_Grade();
 
 		void signForm(Form & paper);
+		void executeForm(Form &paper);
 
 		~Bureaucrat();
 

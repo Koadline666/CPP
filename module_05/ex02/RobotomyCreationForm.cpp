@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 15:10:42 by afenzl            #+#    #+#             */
-/*   Updated: 2022/09/30 19:23:35 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/10/03 03:43:40 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,20 +44,11 @@ void RobotomyRequestForm::beSigned(Bureaucrat & worker)
 
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
-	if (this->getSign())
-		{
-			if (executor.getGrade() <= this->getGrade_exec())
-			{
-				std::cout << "* drilling noises *";
-				int n = rand();
-				if (n & 1)
-					std::cout << target_ << " has been robotomized successfully.";
-				else
-					std::cout << "robotomy failed.";
-			}
-			else
-				throw std::logic_error ("\033[0;31m" + executor.getName() + "'s grade is not high enough to execute RobotomyRequestForm\033[0m");
-		}
+	std::cout << "* drilling noises *" << std::endl;
+	beExecuted(executor);
+	int n = rand();
+	if (n & 1)
+		std::cout << target_ << " has been robotomized successfully." << std::endl;
 	else
-		throw std::logic_error ("\033[0;31mRobotomyRequestForm " + this->getName() + " is not signed.\033[0m");
+		std::cout << "robotomy failed." << std::endl;
 }

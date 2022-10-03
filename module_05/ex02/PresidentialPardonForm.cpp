@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 15:09:19 by afenzl            #+#    #+#             */
-/*   Updated: 2022/09/30 19:39:57 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/10/03 03:48:37 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,8 @@ void PresidentialPardonForm::beSigned(Bureaucrat & worker)
 		throw GradeTooLowException();
 }
 
-void PresidentialPardonForm::check_execute(Bureaucrat const & executor) const
+void PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
-	if (this->getSign())
-		{
-			if (executor.getGrade() <= this->getGrade_exec())
-			{
-				std::cout << target_ << "has been pardoned by Zaphod Beeblebrox" << std::endl;
-			}
-			else
-				throw std::logic_error ("\033[0;31m" + executor.getName() + "'s grade is not high enough to execute RobotomyRequestForm\033[0m");
-		}
-	else
-		throw std::logic_error ("\033[0;31mRobotomyRequestForm " + this->getName() + " is not signed.\033[0m");
+	beExecuted(executor);
+	std::cout << target_ << " has been pardoned by Zaphod Beeblebrox" << std::endl;
 }

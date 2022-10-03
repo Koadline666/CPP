@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 15:19:23 by afenzl            #+#    #+#             */
-/*   Updated: 2022/09/30 19:38:11 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/10/03 03:58:29 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,12 @@ void Form::beSigned(Bureaucrat & worker)
 		throw GradeTooLowException();
 }
 
-void Form::execute(Bureaucrat const & executor) const
+void Form::beExecuted(Bureaucrat const & executor) const
 {
-	
+	if (executor.getGrade() > this->getGrade_exec())
+		throw std::logic_error ("\033[0;31m" + executor.getName() + "'s grade is not high enough to execute " + name_ + "\033[0m");
+	if (!this->getSign())
+		throw std::logic_error ("\033[0;31m" + this->getName() + " is not signed.\033[0m");
 }
 
 //  ----------------------- EXCEPTIONS -------------

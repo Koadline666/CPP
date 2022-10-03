@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 15:09:35 by afenzl            #+#    #+#             */
-/*   Updated: 2022/09/30 19:39:43 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/10/03 03:56:44 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ class PresidentialPardonForm : public Form
 		std::string target_;
 	public:
 		PresidentialPardonForm();
-		PresidentialPardonForm(std::string name);
+		PresidentialPardonForm(std::string target);
 		PresidentialPardonForm(PresidentialPardonForm const & copy);
 
 		PresidentialPardonForm & operator=(Form const & src);
 
 		void beSigned(Bureaucrat & worker);
-		void check_execute(Bureaucrat const & executor) const;
+		void execute(Bureaucrat const & executor) const;
 
 		~PresidentialPardonForm();
 };
