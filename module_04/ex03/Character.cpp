@@ -1,21 +1,19 @@
 
 #include "Character.hpp"
 
-
 //  ----------- CONSTRUCTORS & DESTRUCTOR -----------
  
-Character::Character(): equiped_materia_(0), name_("Randy")
+Character::Character(): num_equiped(0), num_unequiped(0), name_("Randy")
 {
 	std::cout << "Character " << name_ << " created. --> Default" << std::endl;
 }
 
-Character::Character(std::string name): equiped_materia_(0), name_(name)
+Character::Character(std::string name): num_equiped(0), num_unequiped(0), name_(name)
 {
 	std::cout << "Character " << name_ << " created." << std::endl;
 }
 
-
-Character::Character(const Character & copy): equiped_materia_(0)
+Character::Character(const Character & copy): num_equiped(0), num_unequiped(0)
 {
 	std::cout << "Character " << name_ << " created. -->Copy" << std::endl;
 	*this = copy;
@@ -23,9 +21,11 @@ Character::Character(const Character & copy): equiped_materia_(0)
 
 Character::~Character() 
 {
-	for (int i = 0; i < this->equiped_materia_; i++)
+	for (int i = 0; i < this->num_equiped; i++)
 		delete this->materias[i];
-	std::cout << "Character " << name_ << " destroyed." << std::endl;
+	for (int i = 0; i < num_unequiped && unequiped_materias[i]; i++)
+		delete unequiped_materias[i];
+	std::cout << "Character " << name_ << " destroyed!" << std::endl;
 }
 
 //  -------------- OPERATOR OVERLOAD ----------------
@@ -33,11 +33,13 @@ Character::~Character()
 Character & Character::operator= (const Character & src)
 {
 	this->name_ = src.name_;
-	for (int i = 0; i < this->equiped_materia_; i++)
+	for (int i = 0; i < this->num_equiped; i++)
 		delete this->materias[i];
 
-	for (int i = 0; i < src.equiped_materia_; i++)
-		this->equip(src.materias[i]);
+	for (int i = 0; i < src.num_equiped; i++)
+		this->equip(src.materias[i]->clone());
+	
+	this->num_equiped = src.num_equiped;
 	return (*this);
 }
 
@@ -50,29 +52,33 @@ std::string const & Character::getName() const
 
 void Character::equip(AMateria* m)
 {
-	if (this->equiped_materia_ >= 4)
+	for (int i = 0; i < num_unequiped && unequiped_materias[i]; i++)
+		delete unequiped_materias[i];
+	if (this->num_equiped >= 4)
 	{
-		std::cout << name_ << " has a full inventory" << std::endl;
+		std::cout << name_ << " couldn't equip a " << m->getType() << " no more space" << std::endl;
 		return ;
 	}
 
-	this->materias[this->equiped_materia_] = m->clone();
-	this->equiped_materia_++;
+	this->materias[this->num_equiped] = m;
+	this->num_equiped++;
 	std::cout << name_ << " equiped " << m->getType() << std::endl;
 }
 
 void Character::unequip(int idx)
 {
-	if (idx >= this->equiped_materia_ || idx < 0)
+	if (idx >= this->num_equiped || idx < 0)
 	{
 		std::cout << name_ << " couldn't unequip" << std::endl;
 		return ;
 	}
 	
 	std::cout << name_ << " unequiped " << this->materias[idx]->getType() << std::endl;
+	unequiped_materias[num_unequiped] = this->materias[idx];
 	this->materias[idx] = NULL;
-	this->equiped_materia_--;
-	for (int i = idx; i < this->equiped_materia_; i++)
+	this->num_equiped--;
+	this->num_unequiped++;
+	for (int i = idx; i < this->num_equiped; i++)
 	{
 		this->materias[i] = this->materias[i + 1];
 	}
@@ -80,12 +86,26 @@ void Character::unequip(int idx)
 
 void Character::use(int idx, ICharacter& target)
 {
-	if (idx >= this->equiped_materia_ || idx < 0)
+	if (idx >= this->num_equiped || idx < 0)
 	{
 		std::cout << name_ << " couldn't use Materia on " << target.getName() << std::endl;
 		return ;
 	}
 
 	this->materias[idx]->use(target);
+}
+
+void Character::print_materias(void)
+{
+	std::cout << name_ << " has ";
+	int i = 0;
+	if (!materias[0])
+		std::cout << " nothing ";
+	while(i < 4 && materias[i])
+	{
+		std::cout << " " << materias[i]->getType() << ", ";
+		i++;
+	}
+	std::cout << "equipped."<< std::endl;
 }
 

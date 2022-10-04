@@ -6,7 +6,7 @@ RM := rm -f
 
 HEADER = ./AMateria.hpp ./ICharacter.hpp ./Character.hpp ./Ice.hpp ./Cure.hpp ./IMateriaSource.hpp ./MateriaSource.hpp
 
-SRC = ./main.cpp ./AMateria.cpp ./Character.cpp ./Ice.cpp ./Cure.cpp ./MateriaSource.cpp
+SRC = ./main.cpp ./AMateria.cpp ./Character.cpp ./Cure.cpp ./Ice.cpp ./MateriaSource.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)

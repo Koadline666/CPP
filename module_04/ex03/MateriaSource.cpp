@@ -19,7 +19,7 @@ MateriaSource::~MateriaSource()
 	for (int i = 0; i < materias_learned; i++)
 		delete this->materias[i];
 
-	std::cout << "MateriaSource destroyed." << std::endl;
+	std::cout << "MateriaSource destroyed!" << std::endl;
 }
 
 //  -------------- OPERATOR OVERLOAD ----------------
@@ -42,7 +42,7 @@ void MateriaSource::learnMateria(AMateria* m)
 		return ;
 	}
 
-	this->materias[this->materias_learned] = m->clone();
+	this->materias[this->materias_learned] = m;
 	this->materias_learned++;
 	std::cout << "MateriaSource learned " << m->getType() << std::endl;
 }

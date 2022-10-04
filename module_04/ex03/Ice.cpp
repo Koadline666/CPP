@@ -8,7 +8,7 @@ Ice::Ice()
 	this->type_ = "ice";
 }
 
-Ice::Ice(Ice const & copy)
+Ice::Ice(AMateria const & copy)
 {
 	std::cout << "Copy constructor for Ice called" << std::endl;
 	*this = copy;
@@ -18,7 +18,7 @@ Ice::Ice(Ice const & copy)
 Ice::~Ice(){ std::cout << "Ice has been destroyed!" << std::endl; }
 
 
-Ice &Ice::operator=(Ice const & src)
+Ice &Ice::operator=(AMateria const & src)
 {
 	if (this == &src)
 		return (*this);

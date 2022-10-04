@@ -3,13 +3,16 @@
 
 # include "ICharacter.hpp"
 # include "AMateria.hpp"
+# include <vector>
 
 class Character: public ICharacter
 {
 	protected:
-		int	equiped_materia_;
-		std::string	name_;
-		AMateria*	materias[4];
+		AMateria*				materias[4];
+		AMateria*				unequiped_materias[4];
+		int						num_equiped;
+		int						num_unequiped;
+		std::string				name_;
 
 	public:
 		Character();

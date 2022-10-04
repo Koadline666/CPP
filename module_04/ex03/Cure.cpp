@@ -16,7 +16,7 @@ Cure::Cure(AMateria const & copy)
 
 Cure::~Cure(){ std::cout << "Cure has been destroyed!" << std::endl; }
 
-Cure &Cure::operator=(Cure const & src)
+Cure &Cure::operator=(AMateria const & src)
 {
 	if (this == &src)
 		return (*this);

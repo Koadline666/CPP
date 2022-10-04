@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/04 14:27:59 by afenzl            #+#    #+#             */
+/*   Updated: 2022/10/04 15:56:42 by afenzl           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 # include "Character.hpp"
 # include "Ice.hpp"
@@ -9,25 +20,20 @@ int main( void )
 	std::cout << "Test 1\n" << std::endl;
 	{
 		Character mark("mark");
-		AMateria* ice = new Ice();
 
-		mark.equip(ice);
+		mark.equip(new Ice());
 		mark.use(0, mark);
-
-		delete ice;
 	}
 	std::cout << "\n\n" << "Test 2\n" << std::endl;
 	{
-		Character dank("dank");
-		Character frank("frank");
-		AMateria* c = new Cure();
-		frank.equip(c);
+		Character dank("Dank");
+		Character frank("Frank");
+
+		frank.equip(new Cure());
 		frank.use(0, dank);
 		frank.unequip(1);
 		frank.unequip(0);
 		frank.use(0, dank);
-
-		delete c;
 	}
 	std::cout << "\n\n" << "Test 3\n" << std::endl;
 	{
@@ -40,9 +46,8 @@ int main( void )
 	}
 	std::cout << "\n\n" << "Test 4\n" << std::endl;
 	{
-		AMateria* i = new Ice();
 		Character* jef = new Character("jef");
-		jef->equip(i);
+		jef->equip(new (Ice));
 		Character* jef_v2 = new Character(*jef);
 
 		std::cout << std::endl;
@@ -50,14 +55,15 @@ int main( void )
 		jef_v2->use(0, *jef);
 
 		jef->unequip(0);
+		
+		jef->print_materias();
+		jef_v2->print_materias();
 
 		jef->use(0, *jef_v2);
 		jef_v2->use(0, *jef);
-		std::cout << std::endl;
 
 		delete jef;
 		delete jef_v2;
-		delete i;
 	}
 	std::cout << "\n\n" << "Test 5\n" << std::endl;
 	{
@@ -65,22 +71,18 @@ int main( void )
 		AMateria* i = new Ice();
 
 		whatever.learnMateria(i);
-
-		delete i;
 	}
 	std::cout << "\n\n" << "Test 6\n" << std::endl;
 	{
 		MateriaSource source;
-		AMateria* i = new Ice();
 
-		source.learnMateria(i);
+		source.learnMateria(new Ice());
 		AMateria* copy = source.createMateria("ice");
 		std::cout << "Type with 'ice' " << copy->getType() << std::endl;
 		delete copy;
 		copy = source.createMateria("testing");
 		if (!copy)
 			std::cout << "copy was not created because no type has string 'testing'" << std::endl;
-		delete i;
 	}
 	std::cout << "\n\n" << "Test 7\n" << std::endl;
 	{
@@ -101,7 +103,7 @@ int main( void )
 		delete src;
 	}
 
-	system ("leaks ex03");
+	// system ("leaks ex03");
 
 	return (0);
 }
