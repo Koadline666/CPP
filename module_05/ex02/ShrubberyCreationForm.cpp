@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 15:10:52 by afenzl            #+#    #+#             */
-/*   Updated: 2022/10/03 04:02:00 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/10/04 17:33:35 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void ShrubberyCreationForm::beSigned(Bureaucrat & worker)
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
 	beExecuted(executor);
-	std::ofstream outfile(target_ + "_shrubbery", std::ios::app);
+	std::ofstream outfile((target_ + "_shrubbery").c_str(), std::ios::app);
 	if (outfile.is_open())
 	{
 		outfile << "                                  # #### ####" << std::endl;
@@ -63,7 +63,6 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 		outfile << "                                      `}" << std::endl;
 		outfile << "                                       {" << std::endl;
 		outfile.close();
-
 	}
 	else
 		throw std::logic_error ("\033[0;31m ShrubberyCreationForm " + this->getName() + " couldn't open outfile.\033[0m");

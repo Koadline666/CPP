@@ -50,6 +50,11 @@ std::string Animal::getIdea (int number)
 	return (brain->getIdea(number));
 }
 
+Brain *Animal::getBrain (void) const
+{
+	return (brain);
+}
+
 void	Animal::makeSound( void ) const
 {
 	std::cout << "* unidentifiable animal sound *" << std::endl;

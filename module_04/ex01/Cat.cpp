@@ -8,7 +8,7 @@ Cat::Cat(): Animal("Cat")
 	std::cout << this->type << " has been created." << std::endl;
 }
 
-Cat::Cat(Cat const & copy): Animal(copy)
+Cat::Cat(Animal const & copy): Animal(copy)
 {
 	std::cout << this->type << " has been created. --> Copy" << std::endl;
 }
@@ -19,10 +19,10 @@ Cat::~Cat()
 }
 
 //  ----------------------- OPERATOR OVERLOAD -------------
-void	Cat::operator= (Cat const & src)
+void	Cat::operator= (Animal const & src)
 {
-	this->type = src.type;
-	this->brain->setIdeas(src.brain->getIdeas());
+	this->type = src.getType();
+	this->brain = src.getBrain();
 }
 
 //  ----------------------- METHODS -----------------------

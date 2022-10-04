@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 15:19:23 by afenzl            #+#    #+#             */
-/*   Updated: 2022/09/30 15:01:46 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/10/04 17:24:27 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ Form::Form(std::string name, int both_grades): name_(name), grade_sign_(both_gra
 Form::Form(std::string name, int grade_sign, int grade_exec): name_(name), grade_sign_(grade_sign), grade_exec_(grade_exec)
 {
 	std::cout << "Form " << name_ << " ";
-	if (grade_sign < 1 | grade_exec < 1)
+	if (grade_sign < 1 || grade_exec < 1)
 		throw GradeTooHighException();
-	if (grade_sign > 150 | grade_exec > 150)
+	if (grade_sign > 150 || grade_exec > 150)
 		throw GradeTooLowException();
 	std::cout << " created." <<  " g_sign:" << grade_sign_ << " g_exec:" << grade_exec_ << std::endl;
 }

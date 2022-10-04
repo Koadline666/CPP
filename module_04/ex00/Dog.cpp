@@ -8,7 +8,7 @@ Dog::Dog()
 	std::cout << this->type << " has been created." << std::endl;
 }
 
-Dog::Dog(Dog const & copy)
+Dog::Dog(Animal const & copy)
 {
 	*this = copy;
 	std::cout << this->type << " has been created. --> Copy" << std::endl;
@@ -20,9 +20,9 @@ Dog::~Dog()
 }
 
 //  ----------------------- OPERATOR OVERLOAD -------------
-void	Dog::operator= (Dog const & src)
+void	Dog::operator= (Animal const & src)
 {
-	this->type = src.type;
+	this->type = src.getType();
 }
 
 //  ----------------------- METHODS -----------------------

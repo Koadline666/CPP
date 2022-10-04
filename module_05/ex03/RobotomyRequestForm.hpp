@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 15:11:36 by afenzl            #+#    #+#             */
-/*   Updated: 2022/09/30 19:21:04 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/10/04 17:40:54 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define ROBOTOMYREQUESTFORM_HPP
 
 # include "Form.hpp"
+
+# include <stdlib.h>
 
 class RobotomyRequestForm: public Form
 {

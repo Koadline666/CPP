@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 15:01:43 by afenzl            #+#    #+#             */
-/*   Updated: 2022/09/28 15:34:26 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/10/04 17:12:59 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,6 @@ int	main (void)
 	}
 
 	std::cout << std::endl;
-	system("leaks ex01");
+	// system("leaks ex01");
 	return 0;
 }

@@ -21,6 +21,7 @@ class Animal
 		void setIdea(std::string idea, int number);
 		std::string getIdea (int number);
 		std::string getType ( void ) const;
+		Brain *getBrain( void ) const;
 
 		virtual void makeSound( void ) const;
 
