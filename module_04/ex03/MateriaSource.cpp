@@ -5,12 +5,10 @@
 
 MateriaSource::MateriaSource(): materias_learned(0)
 {
-	std::cout << "MateriaSource created." << std::endl;
 }
 
 MateriaSource::MateriaSource(MateriaSource const & copy)
 {
-	std::cout << "MateriaSource created. --> Copy" << std::endl;
 	*this = copy;
 }
 
@@ -18,8 +16,6 @@ MateriaSource::~MateriaSource()
 {
 	for (int i = 0; i < materias_learned; i++)
 		delete this->materias[i];
-
-	std::cout << "MateriaSource destroyed!" << std::endl;
 }
 
 //  -------------- OPERATOR OVERLOAD ----------------

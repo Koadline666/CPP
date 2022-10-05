@@ -4,17 +4,15 @@
 
 Cure::Cure()
 {
-	std::cout << "Cure has been created." << std::endl;
 	this->type_ = "cure";
 }
 
 Cure::Cure(AMateria const & copy)
 {
-	std::cout << "Copy constructor for Cure called" << std::endl;
 	*this = copy;
 }
 
-Cure::~Cure(){ std::cout << "Cure has been destroyed!" << std::endl; }
+Cure::~Cure(){}
 
 Cure &Cure::operator=(AMateria const & src)
 {

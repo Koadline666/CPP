@@ -11,7 +11,7 @@ AMateria::AMateria(AMateria const & copy)
 	*this = copy;
 }
 
-AMateria::~AMateria() { std::cout << "AMateria " << type_ << " destroyed!" << std::endl; }
+AMateria::~AMateria() {}
 
 AMateria &AMateria::operator= (AMateria const & src)
 {

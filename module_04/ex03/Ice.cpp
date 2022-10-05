@@ -4,18 +4,16 @@
 
 Ice::Ice()
 {
-	std::cout << "Ice has been created." << std::endl;
 	this->type_ = "ice";
 }
 
 Ice::Ice(AMateria const & copy)
 {
-	std::cout << "Copy constructor for Ice called" << std::endl;
 	*this = copy;
 	return;
 }
 
-Ice::~Ice(){ std::cout << "Ice has been destroyed!" << std::endl; }
+Ice::~Ice(){}
 
 
 Ice &Ice::operator=(AMateria const & src)

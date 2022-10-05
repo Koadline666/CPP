@@ -5,17 +5,14 @@
  
 Character::Character(): num_equiped(0), num_unequiped(0), name_("Randy")
 {
-	std::cout << "Character " << name_ << " created. --> Default" << std::endl;
 }
 
 Character::Character(std::string name): num_equiped(0), num_unequiped(0), name_(name)
 {
-	std::cout << "Character " << name_ << " created." << std::endl;
 }
 
 Character::Character(const Character & copy): num_equiped(0), num_unequiped(0)
 {
-	std::cout << "Character " << name_ << " created. -->Copy" << std::endl;
 	*this = copy;
 }
 
@@ -25,7 +22,6 @@ Character::~Character()
 		delete this->materias[i];
 	for (int i = 0; i < num_unequiped && unequiped_materias[i]; i++)
 		delete unequiped_materias[i];
-	std::cout << "Character " << name_ << " destroyed!" << std::endl;
 }
 
 //  -------------- OPERATOR OVERLOAD ----------------

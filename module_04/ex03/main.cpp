@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 14:27:59 by afenzl            #+#    #+#             */
-/*   Updated: 2022/10/04 15:56:42 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/10/05 12:37:20 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,13 @@ int main( void )
 		Character mark("mark");
 
 		mark.equip(new Ice());
-		mark.use(0, mark);
+		mark.equip(new Ice());
+		mark.equip(new Ice());
+		mark.equip(new Cure());
+
+		mark.equip(new Ice());
+
+		mark.use(3, mark);
 	}
 	std::cout << "\n\n" << "Test 2\n" << std::endl;
 	{
@@ -37,11 +43,19 @@ int main( void )
 	}
 	std::cout << "\n\n" << "Test 3\n" << std::endl;
 	{
-		AMateria* i = new Ice();
-		AMateria* clone = (*i).clone();
-		std::cout << clone->getType() << std::endl;
+		AMateria* ice = new Ice();
+		AMateria* cure = new Cure();
 	
-		delete i;
+		AMateria* clone = (*ice).clone();
+		std::cout << " orig ice is " << ice->getType() << std::endl;
+		std::cout << "clone is " << clone->getType() << std::endl;
+	
+		clone = (*cure).clone();
+		std::cout << " orig cure is " << cure->getType() << std::endl;
+		std::cout << "clone is " << clone->getType() << std::endl;
+	
+		delete ice;
+		delete cure;
 		delete clone;
 	}
 	std::cout << "\n\n" << "Test 4\n" << std::endl;
