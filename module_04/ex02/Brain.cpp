@@ -1,8 +1,6 @@
 
 #include "Brain.hpp"
 
-
-//  -------------- CONSTRUCTORS & DESTRUCTOR ----------------
 Brain::Brain()
 {
 	std::cout << "Brain starts thinking." << std::endl;
@@ -14,19 +12,18 @@ Brain::Brain(Brain const & copy)
 	std::cout << "Brain starts thinking. --> Copy" << std::endl;
 }
 
+Brain	&Brain::operator= (Brain const & src)
+{
+	for (int i = 0; i < 100; i++ )
+		this->ideas[i] = src.ideas[i];
+	return (*this);
+}
+
 Brain::~Brain()
 {
 	std::cout << "Brain stops thinking" << std::endl;
 }
 
-//  ----------------------- OPERATOR OVERLOAD -------------
-void	Brain::operator= (Brain const & src)
-{
-	for (int i = 0; i < 100; i++ )
-		this->ideas[i] = src.ideas[i];
-}
-
-//  ----------------------- METHODS -----------------------
 void Brain::setIdea(int num, std::string idea)
 {
 	this->ideas[num] = idea;

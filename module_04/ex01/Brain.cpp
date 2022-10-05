@@ -12,10 +12,11 @@ Brain::Brain(Brain const & copy)
 	std::cout << "Brain starts thinking. --> Copy" << std::endl;
 }
 
-void	Brain::operator= (Brain const & src)
+Brain	&Brain::operator= (Brain const & src)
 {
 	for (int i = 0; i < 100; i++ )
 		this->ideas[i] = src.ideas[i];
+	return (*this);
 }
 
 Brain::~Brain()

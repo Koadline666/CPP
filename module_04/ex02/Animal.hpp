@@ -9,7 +9,6 @@ class Animal
 {
 	protected:
 		std::string type;
-		Brain *brain;
 
 	public:
 		Animal();
@@ -17,9 +16,6 @@ class Animal
 		Animal(Animal const & copy);
 
 		void operator= (Animal const & src);
-
-		void setIdea(std::string idea, int number);
-		std::string getIdea (int number);
 		std::string getType ( void ) const;
 
 		virtual void makeSound( void ) const = 0;
