@@ -1,7 +1,6 @@
 
-# include "Convert.hpp"
 # include <string>
-
+# include <iostream>
 
 std::string trim_whitespace(std::string str)
 {
@@ -13,28 +12,24 @@ std::string trim_whitespace(std::string str)
 		str = str.substr(0, end_pos + 1).substr(start_pos);
 	return (str);
 }
+
 std::string trim(std::string str)
 {
 	str = trim_whitespace(str);
-	std::size_t last_zero = str.find_first_not_of('0');
-	if (std::isdigit(str[last_zero] + 1))
-		str.erase(0, std::min(last_zero, str.size() - 1));
-	else if (last_zero > 0)
-		str.erase(0, std::min(last_zero - 1, str.size() - 1));
-	last_zero = str.find_last_not_of('0');
-	bool is_float = false;
-	if (str[str.size() - 1] == 'f')
+	bool is_float;
+	bool comma = std::strchr(str.c_str(), '.');
+
+	if (str[str.size() -1] == 'f')
 	{
-		last_zero = str.substr(0, str.size() - 1).find_last_not_of('0');
+		str = str.substr(0, str.size() - 1);
 		is_float = true;
 	}
-	if (last_zero != std::string::npos && last_zero < str.size() - 1)
-	{
-		str.erase(last_zero + 2, str.size() - 1);
-		std::cout << "STR " << str << std::endl;
-		if (is_float)
-			str.append("f");
-	}
+	while (str[0] == '0' && std::isdigit(str[1]))
+		str = str.substr(1);
+	while (comma && str[str.size() - 1] == '0' && str[str.size() - 2] != '.')
+		str = str.substr(0, str.size() - 1);
+	if (is_float)
+		str.append("f");
 	return(str);
 }
 
@@ -45,23 +40,99 @@ bool check_if_char(std::string literal)
 	return (false);
 }
 
-// int calc_flow_lvl(std::string literal)
-// {
-// 	long long check_overflow = std::atoll(literal.c_str());
-// 	if (check_overflow > std::numeric_limits<int>::max() || check_overflow > std::numeric_limits<int>::min())
+bool check_if_int(std::string literal)
+{
+	const std::string DIGITS = "0123456789";
 
-// }
+	size_t pos_no_dig = literal.find_last_not_of(DIGITS);
+	if(pos_no_dig != std::string::npos && pos_no_dig > 0)
+	{
+		return (false);
+	}
+	
+	int convert = std::atoi(literal.c_str());
+	if (convert != 0 || (literal.size() == 1 && literal[0] == '0'))
+	{
+		return (true);
+	}
+	
+	return (false);
+}
+
+bool check_if_float(std::string literal)
+{
+	const std::string DIGITS = "0123456789.f";
+
+	size_t pos_no_dig = literal.find_last_not_of(DIGITS);
+	if(pos_no_dig != std::string::npos && pos_no_dig > 0)
+		return (false);
+	if(literal.find_first_of('f') != (size_t) literal.size() - 1)
+		return (false);
+	size_t first_comma = literal.find_first_of(".");
+	if (first_comma != literal.find_last_of("."))
+		return (false);
+	if (first_comma == 0 || first_comma == literal.size() - 2)
+		return (false);
+	
+	float convert = std::atof(literal.c_str());
+	if (convert != 0 || (literal.size() == 1 && literal[0] == '0'))
+		return (true);
+	return (false);
+}
+bool check_if_double(std::string literal)
+{
+	const std::string DIGITS = "0123456789.";
+
+	size_t pos_no_dig = literal.find_last_not_of(DIGITS);
+	if(pos_no_dig != std::string::npos && pos_no_dig > 0)
+		return (false);
+
+	if (literal.find_first_of(".") == std::string::npos)
+		return (false);
+	size_t first_comma = literal.find_first_of(".");
+	if (first_comma != literal.find_last_of(".") || first_comma != std::string::npos)
+		return (false);
+	if (first_comma == 0 || first_comma == literal.size() - 1)
+		return (false);
+	
+	double convert = std::atof(literal.c_str());
+	if (convert != 0 || (literal.size() == 1 && literal[0] == '0'))
+		return (true);
+	return (false);
+}
+
+int calc_flow_lvl(std::string literal) // 0 = int | 1 = float | 2 = double | 3 = oveeflow
+{
+	long double check_overflow = 0;
+	try
+	{
+		check_overflow = std::stold(literal.c_str());
+	}
+	catch(const std::exception& e)
+	{
+		return (3);
+	}
+
+	if (check_overflow > std::numeric_limits<double>::max() || check_overflow < std::numeric_limits<double>::min())
+		return (3);
+	if (check_overflow > std::numeric_limits<float>::max() || check_overflow < std::numeric_limits<float>::min())
+		return (2);
+	if (check_overflow > std::numeric_limits<int>::max() || check_overflow < std::numeric_limits<int>::min())
+		return (1);
+	return (0);
+}
 
 char analise(std::string literal)
 {
 	literal = trim(literal);
 	std::cout << "LITERAL " << literal << std::endl;
-	if (check_if_char(literal)) return ('c');
 
-	// int flow_lvl = calc_flow_lvl(literal);
-	// else if (check_if_int(literal)) c = 'i';
-	// else if (check_if_double(literal) > 0) c = 'd';
-	// else if (check_if_float(literal)) c = 'f';
+	int flow_lvl = calc_flow_lvl(literal);
+	std::cout << "LVL: " << flow_lvl << std::endl;
+	if (check_if_char(literal)) return ('c');
+	else if (flow_lvl <= 0 && check_if_int(literal)) return ('i');
+	else if (flow_lvl <= 1 && check_if_float(literal)) return ('f');
+	else if (flow_lvl <= 2 && check_if_double(literal) > 0) return ('d');
 	return 'n';
 }
 
@@ -72,7 +143,7 @@ int main( int argc, char** argv )
 		std::cout << "ERROR" << std::endl;
 		return (1);
 	}
-	std::cout << "OUTPUT " << analise(argv[1]) << std::endl;
+	std::cout << analise(argv[1]) << std::endl;
 	return (0);
 }
 
