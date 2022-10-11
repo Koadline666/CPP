@@ -75,7 +75,7 @@ bool check_if_float(std::string literal)
 		return (false);
 	
 	float convert = std::atof(literal.c_str());
-	if (convert != 0 || (literal.size() == 1 && literal[0] == '0'))
+	if (convert != 0 || ((literal.size() == 4 && literal[0] == '0' && literal[1] == '.' && literal[2] == '0')))
 		return (true);
 	return (false);
 }
@@ -96,8 +96,9 @@ bool check_if_double(std::string literal)
 		return (false);
 	
 	double convert = std::atof(literal.c_str());
-	if (convert != 0 || (literal.size() == 1 && literal[0] == '0'))
+	if (convert != 0 || (literal.size() == 3 && literal[0] == '0' && literal[1] == '.' && literal[2] == '0'))
 		return (true);
+	std::cout << "HELLO" << std::endl;
 	return (false);
 }
 
@@ -107,12 +108,14 @@ int calc_flow_lvl(std::string literal) // 0 = int | 1 = float | 2 = double | 3 =
 	try
 	{
 		check_overflow = std::stold(literal.c_str());
+		std::cout << check_overflow << std::endl;
 	}
 	catch(const std::exception& e)
 	{
 		return (3);
 	}
-
+	if (!check_overflow)
+		return (0);
 	if (check_overflow > std::numeric_limits<double>::max() || check_overflow < std::numeric_limits<double>::min())
 		return (3);
 	if (check_overflow > std::numeric_limits<float>::max() || check_overflow < std::numeric_limits<float>::min())
