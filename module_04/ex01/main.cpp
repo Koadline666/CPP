@@ -6,12 +6,18 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 15:01:43 by afenzl            #+#    #+#             */
-/*   Updated: 2022/10/05 14:54:19 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/10/11 15:23:35 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 #include "Cat.hpp"
+
+void virtual_test_function(Animal* test)
+{
+	test->makeSound();
+	delete(test);
+}
 
 int	main (void)
 {
@@ -80,8 +86,15 @@ int	main (void)
 		delete j;//should not create a leak
 		delete i;
 	}
+	// {
+		// Animal *a = new Animal;
+		// Cat *c = new Cat;
+		// virtual_test_function(a);
+		// virtual_test_function(c);
 
-	std::cout << std::endl;
-	// system("leaks ex01");
+		// std::cout << std::endl;
+		// system("leaks ex01");
+	// }
+
 	return 0;
 }

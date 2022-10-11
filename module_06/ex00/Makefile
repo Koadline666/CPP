@@ -1,12 +1,12 @@
-NAME = ex01
+NAME = ex00
 
 CPP = c++
 CPP_FLAGS =  -Wall -Wextra -Werror -std=c++98
 RM := rm -f
 
-HEADER = ./Animal.hpp ./Dog.hpp ./Cat.hpp ./Brain.hpp
+HEADER = 
 
-SRC = ./main.cpp ./Animal.cpp ./Dog.cpp ./Cat.cpp ./Brain.cpp
+SRC = ./main.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
@@ -20,7 +20,7 @@ $(NAME): $(OBJ) $(HEADER)
 	@echo " \033[0;31m\____|\033[0;32m \___/ \033[0;33m _|  _|\033[0;34m _|    \033[0;35m___|\033[0;36m _____|\033[0;31m _____|\033[0;32m ____/ \033[0;33m _) \033[0m"
 	@echo "                                                        "
 
-$(OBJ): $(SRC) $(HEADER)
+$(OBJ): $(SRC)
 	@$(CPP) -c $(CPP_FLAGS) $(SRC)
 
 clean:

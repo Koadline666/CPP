@@ -1,12 +1,24 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/10/09 19:22:39 by afenzl            #+#    #+#              #
+#    Updated: 2022/10/09 19:37:35 by afenzl           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = ex01
 
 CPP = c++
 CPP_FLAGS =  -Wall -Wextra -Werror -std=c++98
 RM := rm -f
 
-HEADER = ./Animal.hpp ./Dog.hpp ./Cat.hpp ./Brain.hpp
+HEADER = ./Serialize.hpp ./Data.hpp
 
-SRC = ./main.cpp ./Animal.cpp ./Dog.cpp ./Cat.cpp ./Brain.cpp
+SRC = ./main.cpp ./Serialize.cpp ./Data.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
@@ -20,7 +32,7 @@ $(NAME): $(OBJ) $(HEADER)
 	@echo " \033[0;31m\____|\033[0;32m \___/ \033[0;33m _|  _|\033[0;34m _|    \033[0;35m___|\033[0;36m _____|\033[0;31m _____|\033[0;32m ____/ \033[0;33m _) \033[0m"
 	@echo "                                                        "
 
-$(OBJ): $(SRC) $(HEADER)
+$(OBJ): $(SRC)
 	@$(CPP) -c $(CPP_FLAGS) $(SRC)
 
 clean:

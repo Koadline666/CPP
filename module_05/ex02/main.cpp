@@ -6,7 +6,7 @@
 /*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 14:51:01 by afenzl            #+#    #+#             */
-/*   Updated: 2022/10/04 17:39:40 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/10/10 12:47:32 by afenzl           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ int main( void )
 		// Bureaucrat Peter("Peter", 137);
 		// ShrubberyCreationForm paper("jeff");
 
-		// Bureaucrat Frank("Frank", 72);
-		// Bureaucrat Peter("Peter", 45);
-		// RobotomyRequestForm paper("jeff");
+		Bureaucrat Frank("Frank", 72);
+		Bureaucrat Peter("Peter", 45);
+		RobotomyRequestForm paper("jeff");
 
-		Bureaucrat Frank("Frank", 25);
-		Bureaucrat Peter("Peter", 5);
-		PresidentialPardonForm paper("jeff");
+		// Bureaucrat Frank("Frank", 25);
+		// Bureaucrat Peter("Peter", 5);
+		// PresidentialPardonForm paper("jeff");
 
 		std::cout << std::endl << paper << std::endl;
 		Frank.signForm(paper);
