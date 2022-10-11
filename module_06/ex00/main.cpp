@@ -90,7 +90,7 @@ bool check_if_double(std::string literal)
 	if (literal.find_first_of(".") == std::string::npos)
 		return (false);
 	size_t first_comma = literal.find_first_of(".");
-	if (first_comma != literal.find_last_of(".") || first_comma != std::string::npos)
+	if (first_comma != literal.find_last_of("."))
 		return (false);
 	if (first_comma == 0 || first_comma == literal.size() - 1)
 		return (false);
