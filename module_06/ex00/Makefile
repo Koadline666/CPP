@@ -4,9 +4,9 @@ CPP = c++
 CPP_FLAGS =  -Wall -Wextra -Werror -std=c++98
 RM := rm -f
 
-HEADER = 
+HEADER = conversion.hpp
 
-SRC = ./main.cpp
+SRC = main.cpp analise.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
