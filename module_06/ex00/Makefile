@@ -1,4 +1,4 @@
-NAME = ex00
+NAME = convert
 
 CPP = c++
 CPP_FLAGS =  -Wall -Wextra -Werror -std=c++98
@@ -6,7 +6,7 @@ RM := rm -f
 
 HEADER = conversion.hpp
 
-SRC = main.cpp analise.cpp
+SRC = main.cpp analise.cpp convert.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)

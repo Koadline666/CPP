@@ -14,7 +14,7 @@ std::string trim_whitespace(std::string str)
 std::string trim(std::string str)
 {
 	str = trim_whitespace(str);
-	bool is_float;
+	bool is_float = false;
 	bool comma = strchr(str.c_str(), '.');
 
 	if (str[str.size() -1] == 'f')
@@ -40,7 +40,7 @@ bool check_if_char(std::string literal)
 
 bool check_if_int(std::string literal)
 {
-	const std::string DIGITS = "0123456789";
+	const std::string DIGITS = "+-0123456789";
 
 	size_t pos_no_dig = literal.find_last_not_of(DIGITS);
 	if(pos_no_dig != std::string::npos && pos_no_dig > 0)
@@ -67,8 +67,6 @@ bool check_if_pseudo_float(std::string literal)
 
 bool check_if_float(std::string literal)
 {
-	if (check_if_pseudo_float(literal) > 0)
-		return (true);
 	const std::string DIGITS = "0123456789.f";
 
 	size_t pos_no_dig = literal.find_last_not_of(DIGITS);
@@ -98,14 +96,11 @@ bool check_if_pseudo_double(std::string literal)
 
 bool check_if_double(std::string literal)
 {
-	if (check_if_pseudo_double(literal))
-		return (true);
-	const std::string DIGITS = "0123456789.";
+	const std::string DIGITS = "+-0123456789.";
 
 	size_t pos_no_dig = literal.find_last_not_of(DIGITS);
-	if(pos_no_dig != std::string::npos && pos_no_dig > 0)
+	if(pos_no_dig != std::string::npos || pos_no_dig == 0 )
 		return (false);
-
 	if (literal.find_first_of(".") == std::string::npos)
 		return (false);
 	size_t first_comma = literal.find_first_of(".");
@@ -120,35 +115,27 @@ bool check_if_double(std::string literal)
 	return (false);
 }
 
-int calc_flow_lvl(std::string literal) // 0 = int | 1 = float | 2 = double | 3 = overflow
+int calc_flow_lvl(std::string literal) // 0 = int | 1 = float | 2 = double | 3 = overflow | 4 pseudo
 {
-	long double check_overflow = 0;
-	try
-	{
-		check_overflow = atof(literal.c_str());
-	}
-	catch(const std::exception& e)
-	{
+	long double check_overflow = atof(literal.c_str());
+
+	if (check_overflow == std::numeric_limits<double>::infinity() || check_overflow == (std::numeric_limits<double>::infinity()) * -1
+		|| check_overflow != check_overflow )
+		return(4);
+	if (check_overflow > std::numeric_limits<double>::max() || check_overflow < -std::numeric_limits<double>::max())
 		return (3);
-	}
-	if (!check_overflow)
-		return (0);
-	if (check_overflow > std::numeric_limits<double>::max() || check_overflow < std::numeric_limits<double>::min())
-		return (3);
-	if (check_overflow > std::numeric_limits<float>::max() || check_overflow < std::numeric_limits<float>::min())
+	if (check_overflow > std::numeric_limits<float>::max() || check_overflow < -std::numeric_limits<float>::max())
 		return (2);
-	if (check_overflow > std::numeric_limits<int>::max() || check_overflow < std::numeric_limits<int>::min())
+	if (check_overflow > std::numeric_limits<int>::max() || check_overflow < -std::numeric_limits<int>::max())
 		return (1);
 	return (0);
 }
-
-char analise(std::string literal)
+char analise(std::string literal, int *flow_lvl)
 {
-	literal = trim(literal);
-	int flow_lvl = calc_flow_lvl(literal);
+	*flow_lvl = calc_flow_lvl(literal);
 	if (check_if_char(literal)) return ('c');
-	else if (flow_lvl <= 0 && check_if_int(literal)) return ('i');
-	else if (flow_lvl <= 1 && check_if_float(literal)) return ('f');
-	else if (flow_lvl <= 2 && check_if_double(literal) > 0) return ('d');
-	return 'n';
+	else if (*flow_lvl <= 0 && check_if_int(literal)) return ('i');
+	else if ((*flow_lvl <= 1 && check_if_float(literal)) || (*flow_lvl == 4 && check_if_pseudo_float(literal))) return ('f');
+	else if ((*flow_lvl <= 2 && check_if_double(literal)) || *flow_lvl == 4 ) return ('d');
+	return ('n');
 }
