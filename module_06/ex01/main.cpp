@@ -3,22 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fbruggem <fbruggem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 19:23:38 by afenzl            #+#    #+#             */
-/*   Updated: 2022/10/09 19:47:52 by afenzl           ###   ########.fr       */
+/*   Updated: 2022/10/13 15:38:24 by fbruggem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Serialize.hpp"
 
+uintptr_t serialize(Data* ptr)
+{
+	return (reinterpret_cast<uintptr_t>(ptr));
+}
+
+Data* deserialize(uintptr_t raw)
+{
+	return(reinterpret_cast<Data *>(raw));
+}
+
 int main( void )
 {
-	Data days(7, "the amount of days in a week");
-	
-	std::cout << days.get_info() << " is " << days.get_data() << std::endl;
+	Data d;
+	d.name = "Hello";
 
-	uintptr_t serialized = serialize(&days);
-	std::cout << "the serialized version is " << serialized << std::endl;
+	std::cout << deserialize(serialize(&d))->name << std::endl;
 	return (0);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: afenzl <afenzl@student.42.fr>              +#+  +:+       +#+         #
+#    By: fbruggem <fbruggem@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/09 19:22:39 by afenzl            #+#    #+#              #
-#    Updated: 2022/10/09 19:37:35 by afenzl           ###   ########.fr        #
+#    Updated: 2022/10/13 15:35:15 by fbruggem         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,9 @@ CPP = c++
 CPP_FLAGS =  -Wall -Wextra -Werror -std=c++98
 RM := rm -f
 
-HEADER = ./Serialize.hpp ./Data.hpp
+HEADER = ./Serialize.hpp 
 
-SRC = ./main.cpp ./Serialize.cpp ./Data.cpp
+SRC = ./main.cpp 
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
