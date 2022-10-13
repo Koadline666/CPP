@@ -15,7 +15,7 @@ std::string trim(std::string str)
 {
 	str = trim_whitespace(str);
 	bool is_float;
-	bool comma = std::strchr(str.c_str(), '.');
+	bool comma = strchr(str.c_str(), '.');
 
 	if (str[str.size() -1] == 'f')
 	{
@@ -48,7 +48,7 @@ bool check_if_int(std::string literal)
 		return (false);
 	}
 	
-	int convert = std::atoi(literal.c_str());
+	int convert = atoi(literal.c_str());
 	if (convert != 0 || (literal.size() == 1 && literal[0] == '0'))
 	{
 		return (true);
@@ -57,8 +57,18 @@ bool check_if_int(std::string literal)
 	return (false);
 }
 
+bool check_if_pseudo_float(std::string literal)
+{
+	if (literal == "nanf" || literal == "NANF" || literal == "+INFF"
+		|| literal == "+inff" || literal== "-inff"|| literal== "-INFF")
+		return(true);
+	return(false);
+}
+
 bool check_if_float(std::string literal)
 {
+	if (check_if_pseudo_float(literal) > 0)
+		return (true);
 	const std::string DIGITS = "0123456789.f";
 
 	size_t pos_no_dig = literal.find_last_not_of(DIGITS);
@@ -72,13 +82,24 @@ bool check_if_float(std::string literal)
 	if (first_comma == 0 || first_comma == literal.size() - 2)
 		return (false);
 	
-	float convert = std::atof(literal.c_str());
+	float convert = atof(literal.c_str());
 	if (convert != 0 || ((literal.size() == 4 && literal[0] == '0' && literal[1] == '.' && literal[2] == '0')))
 		return (true);
 	return (false);
 }
+
+bool check_if_pseudo_double(std::string literal)
+{
+	if (literal == "nan" || literal == "NAN" || literal == "+INF"
+		|| literal == "+inf" || literal== "-inf"|| literal== "-INF")
+		return(true);
+	return(false);
+}
+
 bool check_if_double(std::string literal)
 {
+	if (check_if_pseudo_double(literal))
+		return (true);
 	const std::string DIGITS = "0123456789.";
 
 	size_t pos_no_dig = literal.find_last_not_of(DIGITS);
@@ -93,18 +114,18 @@ bool check_if_double(std::string literal)
 	if (first_comma == 0 || first_comma == literal.size() - 1)
 		return (false);
 	
-	double convert = std::atof(literal.c_str());
+	double convert = atof(literal.c_str());
 	if (convert != 0 || (literal.size() == 3 && literal[0] == '0' && literal[1] == '.' && literal[2] == '0'))
 		return (true);
 	return (false);
 }
 
-int calc_flow_lvl(std::string literal) // 0 = int | 1 = float | 2 = double | 3 = oveeflow
+int calc_flow_lvl(std::string literal) // 0 = int | 1 = float | 2 = double | 3 = overflow
 {
 	long double check_overflow = 0;
 	try
 	{
-		check_overflow = std::stold(literal.c_str());
+		check_overflow = atof(literal.c_str());
 	}
 	catch(const std::exception& e)
 	{
