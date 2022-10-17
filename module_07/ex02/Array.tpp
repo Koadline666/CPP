@@ -29,7 +29,14 @@ class Array
 			return(*this);
 		}
 
-		T	&operator[](int n) const
+		T	&operator[](int n)
+		{
+			if (n < 0 || n >= size_)
+				throw std::out_of_range("out of range");
+			return(array_[n]);
+		}
+
+		const T	&operator[](int n) const
 		{
 			if (n < 0 || n >= size_)
 				throw std::out_of_range("out of range");

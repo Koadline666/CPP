@@ -3,12 +3,12 @@
 
 # include <iostream>
 
-template <class T> void print_whatever(T whatever)
+template <class T> void print_whatever(T const &whatever)
 {
 	std::cout << "-->" << whatever << "<--" << std::endl;
 }
 
-template <class T> void iter(T *a, int len, void(*func)(const T t))
+template <class T> void iter(T *a, int len, void(*func)(const T &t))
 {
 	if (!a || len <= 0)
 		return ;

@@ -12,6 +12,7 @@ int main( void )
 	string.setValue("\"this is a string\"", 0);
 	string.setValue("\"this is a string .1\"", 1);
 	string.setValue("\"this is a string .2\"", 2);
+	string[2] = ("\"this is string set with []\"");
 
 	for(int i = 0; i < string.size(); i++)
 		std::cout << string[i] << std::endl;
@@ -32,13 +33,18 @@ int main( void )
 	try
 	{
 		Array<int> a(1);
-		std::cout << a[-1] << std::endl;
+		// std::cout << a[-1] << std::endl;
 		std::cout << a[0] << std::endl;
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << "\033[0;31m" << e.what() << "\033[0m" << '\n';
 	}
+
+	const Array<std::string> const_a(string);
+	std::cout << const_a[1];
+	const_a[1] = "this should not work";
+	std::cout << const_a[1];
 
 	return (0);
 }
