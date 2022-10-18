@@ -41,10 +41,11 @@ int main( void )
 		std::cerr << "\033[0;31m" << e.what() << "\033[0m" << '\n';
 	}
 
+	std::cout << std::endl << "TESTING IT WITH CONST:" << std::endl;
 	const Array<std::string> const_a(string);
-	std::cout << const_a[1];
-	const_a[1] = "this should not work";
-	std::cout << const_a[1];
+	std::cout << const_a[1] << std::endl;
+	// const_a[1] = "this should not work";
+	// std::cout << const_a[1] << std::endl;
 
 	return (0);
 }
